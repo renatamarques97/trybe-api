@@ -12,6 +12,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise-jwt'
+gem 'devise'
+gem 'rack-cors'
 
 group :test do
   gem "simplecov", require: false
