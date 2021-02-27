@@ -38,6 +38,7 @@ logfile
 /bin/*
 config/webpack/*
 yarn.lock
+.browserslistrc
 
 # Ignore asdf file
 .tool-versions
