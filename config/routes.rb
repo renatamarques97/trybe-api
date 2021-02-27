@@ -5,4 +5,5 @@ Rails.application.routes.draw do
       registrations: :registrations,
       sessions: :sessions
     }
+  resources :users
 end
