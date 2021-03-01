@@ -143,9 +143,9 @@ See `http://localhost:3000/`
 - Request body:
 	```json
 	{
-	  "user": {
-		  "email": "brett@email.com",
-		  "password": "123456"
+    "user": {
+      "email": "brett@email.com",
+      "password": "123456"
 	  }
   }
 	```
@@ -183,7 +183,7 @@ See `http://localhost:3000/`
 	- ___content___ (String)
 - Request body:
 	```json
-	{
+  {
     "title": "post title",
     "content": "content text"
   }
@@ -215,13 +215,13 @@ See `http://localhost:3000/`
 	```json
 	{
 	  "post": {
-		  "title": "edited test"
+      "title": "edited test"
 	  }
   }
 	```
-- Expected response:
+- Expected response: 200
 	```json
-	{
+  {
     "title": "edited test",
     "content": "test"
   }
