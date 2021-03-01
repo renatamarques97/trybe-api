@@ -35,7 +35,6 @@
 yarn-debug.log*
 .yarn-integrity
 logfile
-/bin/*
 config/webpack/*
 yarn.lock
 .browserslistrc
