@@ -39,32 +39,22 @@ class UsersController < ApplicationController
   private
 
   def set_current_user
-    auth = decode_jwt(request.headers['Authorization'])
+    auth = verify_token
 
     if auth.try(:match, 'Invalid').present?
-      return auth
+      return render json: { message: "User invalid" },
+        status: :unprocessable_entity
     else
       id = auth.dig(0, "id")
       @user = User.find_by_id(id)
     end
   end
 
-  def decode_jwt(token)
-    begin
-      jwt_payload = JWT
-        .decode(token, Rails.application.secrets.secret_key_base)
-    rescue JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError
-      return render json: { message: "Invalid or expired token" },
-        status: :unprocessable_entity
-    end
+  def verify_token
+    token_verifier.call
   end
 
-  def verify_token
-    if request.headers['Authorization'].present?
-      decode_jwt(request.headers['Authorization'])
-    else
-      return render json: { message: "Invalid or expired token" },
-        status: :unprocessable_entity
-    end
+  def token_verifier
+    @_token_verifier ||= ::TokenVerifier.new(request.headers['Authorization'])
   end
 end
